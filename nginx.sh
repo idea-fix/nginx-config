@@ -27,7 +27,7 @@ then
 fi
 
 echo "Installing native NGINX package"
-sudo yum install -y nginx gcc make libaio-devel pcre-devel openssl-devel expat-devel zlib-devel libxslt-devel libxslt-devel gd-devel GeoIP-devel gperftools-devel perl-ExtUtils-Embed
+sudo yum install -y nginx gcc wget make libaio-devel pcre-devel openssl-devel expat-devel zlib-devel libxslt-devel libxslt-devel gd-devel GeoIP-devel gperftools-devel perl-ExtUtils-Embed
 
 echo "Setting up directory/folder structure"
 sudo mkdir -p /home/nginx
