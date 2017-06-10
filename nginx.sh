@@ -3,13 +3,11 @@
 NGINX_VER=nginx-1.12.0
 CONF_FILE=rtmp.nginx.conf
 ROOT_PWD=`pwd`
-BINARY=`which nginx > /dev/null 2>&1`
 
-if [ ! -x $BINARY ]
+if !(which nginx > /dev/null 2>&1)
 then
 	echo "NGINX not currently installed"
-elif [ -x $BINARY ]
-then
+else
 	echo "NGINX is already installed"
 	INSTALL_VER=`nginx -v 2>&1 | awk '{print $3}'`
 	echo "Installed version: $INSTALL_VER"
