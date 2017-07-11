@@ -3,6 +3,8 @@
 NGINX_VER=nginx-1.12.0
 CONF_FILE=rtmp.nginx.conf
 ROOT_PWD=`pwd`
+#RTMP_MODULE_URL="https://github.com/arut/nginx-rtmp-module.git"
+RTMP_MODULE_URL="https://github.com/ut0mt8/nginx-rtmp-module.git"
 
 if !(which nginx > /dev/null 2>&1)
 then
@@ -64,7 +66,11 @@ git clone https://github.com/atomx/nginx-http-auth-digest.git
 # Get NGINX Additional WebDav Support
 git clone https://github.com/arut/nginx-dav-ext-module.git
 # Get NGINX RTMP module source code
-git clone https://github.com/arut/nginx-rtmp-module.git
+git clone $RTMP_MODULE_URL
+
+# Perform changes to buffer values in a couple of files
+sed -i "s/#define NGX_RTMP_HLS_BUFSIZE            (1024\*1024)/#define NGX_RTMP_HLS_BUFSIZE            (4096\*1024)/" nginx-rtmp-module/hls/ngx_rtmp_hls_module.c
+sed -i "s/#define NGX_RTMP_DASH_BUFSIZE           (1024\*1024)/#define NGX_RTMP_DASH_BUFSIZE           (4096\*1024)/" nginx-rtmp-module/dash/ngx_rtmp_dash_module.c
 
 # Compile NGINX agaist external modules
 #
