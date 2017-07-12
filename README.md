@@ -20,7 +20,7 @@ Install GIT on CentOS:
 
     $ sudo yum -y install git
 
-Install GIT on Ubuntu:
+Or install GIT on Ubuntu:
 
     $ sudo apt-get install git
 
