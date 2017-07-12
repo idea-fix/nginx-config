@@ -138,13 +138,13 @@ The access logs will show something like:
 
 With the publishing process protected by a password, you will want to comment out the /dash section of the NGINX web configuration file in order to disable the unprotected folder (which is otherwise writable by anybody).
 
-### Stream Trancoding
+### Stream Trancoding from RTMP to MPEG-DASH
 
 You can test stream transcoding by invoking FFMPEG and providing it with a local video file to simulate the publishing of live content:
 
     $ ffmpeg -re -i samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -acodec libfaac -f flv rtmp://127.0.0.1/dash/test_TB
 
-On Ubuntu the flags need to be slightly different, since they don't support the same audio codecs:
+On Ubuntu the flags need to be slightly different, since they don't support the same audio codecs, you may need to experiment:
 
     $ ffmpeg -re -i samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -c:a aac -strict -2 -f flv rtmp://127.0.0.1/dash/test_TB
 
@@ -152,11 +152,13 @@ On Ubuntu the flags need to be slightly different, since they don't support the 
 
 This will deliver your video file to the NGINX RTMP module. After a few moments, you should also be able to see transcoded content being exposed through the NGINX web server at the URL:
 
-http://[server-ip]/transcoding/
+http://[server-ip]/transcode-dash/
 
 (substitute the actual IP address of your server in the string above)
 
-The local directory where this content appears is under /tmp, but it can sometimes be hard to find due to the directory structure involved. The commands shown below should show you the generated MPEG-DASH content.
+The local directory where this content is written is actually under /tmp, but it can sometimes be hard to find because it is remapped on CentOS (it is simply /tmp/dash on Ubuntu).
+
+The commands shown below should show you the generated MPEG-DASH content on CentOS:
 
     $ sudo -i
     # ls -l /tmp/*nginx*/tmp/dash/
@@ -171,9 +173,9 @@ The local directory where this content appears is under /tmp, but it can sometim
 
 On my system, the transcoded content could be found at:
 
-/tmp/systemd-private-e25d82fccf2948f4ac7d18717e876ad8-nginx.service-qkAQ0R/tmp/dash
+    /tmp/systemd-private-e25d82fccf2948f4ac7d18717e876ad8-nginx.service-qkAQ0R/tmp/dash
 
-If/when you stop the publishing process with ctrl-C, you should see a message similar to the one below in the /var/log/nginx/access.log file:
+When you stop the publishing process you should see a message similar to the one below in the /var/log/nginx/access.log file:
 
     10.49.206.54 [25/May/2017:12:39:05 +0100] PUBLISH "dash" "test_TB" "" - 602675 409 "" "FMLE/3.0 (compatible; Lavf56.25" (7s)
 
