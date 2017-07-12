@@ -40,7 +40,7 @@ then
 	sudo yum -y install epel-release
 
 	echo "Installing native NGINX package and dependencies"
-	sudo yum install -y nginx net-tools gcc wget make libaio-devel pcre-devel openssl-devel expat-devel zlib-devel libxslt-devel libxslt-devel gd-devel GeoIP-devel gperftools-devel perl-ExtUtils-Embed
+	sudo yum install -y nginx iptables-services net-tools gcc wget make libaio-devel pcre-devel openssl-devel expat-devel zlib-devel libxslt-devel libxslt-devel gd-devel GeoIP-devel gperftools-devel perl-ExtUtils-Embed
 
 elif [ $OS == "UBUNTU" ]
 then
@@ -147,6 +147,15 @@ then
 	echo "Installing FFMPEG"
 	sudo apt-get -y install ffmpeg
 fi
+
+if [ $OS == "CENTOS" ]
+then
+        echo "Disabling firewalld, this may not be appropriate"
+	echo " if your system is exposed to the Internet!"
+        systemctl mask firewalld > /dev/null 2>&1
+        sudo systemctl disable firewalld > /dev/null 2>&1
+        sudo systemctl stop firewalld > /dev/null 2>&1
+fi      
 
 echo "Enabling native NGINX to start at boot"
 sudo systemctl enable nginx
