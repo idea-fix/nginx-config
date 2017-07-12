@@ -16,12 +16,19 @@ The script:
 
 ### Installing NGINX
 
-Clone the repo (using git) and then run the installation script:
+Clone the repo (using git):
 
     $ sudo yum -y install git
     $ git clone https://github.com/nokia/nginx-config.git
     $ cd nginx-config
-    $ sudo ./nginx.sh
+
+Then run the installation script for your OS, either:
+
+    $ sudo ./centos.sh
+
+Or:
+
+    $ sudo ./ubuntu.sh
 
 ### Examining the server
 
