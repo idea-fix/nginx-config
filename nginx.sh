@@ -152,7 +152,7 @@ if [ $OS == "CENTOS" ]
 then
         echo "Disabling firewalld, this may not be appropriate"
 	echo " if your system is exposed to the Internet!"
-        systemctl mask firewalld > /dev/null 2>&1
+        sudo systemctl mask firewalld > /dev/null 2>&1
         sudo systemctl disable firewalld > /dev/null 2>&1
         sudo systemctl stop firewalld > /dev/null 2>&1
 fi      
