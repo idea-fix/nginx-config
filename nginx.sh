@@ -124,7 +124,7 @@ then
 	echo "Changing nginx daemon user in configuration server file"
 	sed -i "s/user nginx/user $NGINX_USER/" nginx/nginx.conf
 	echo "Copying compiled NGINX binary into place"
-	cp /usr/share/nginx/sbin/nginx /usr/sbin/nginx
+	sudo cp /usr/share/nginx/sbin/nginx /usr/sbin/nginx
 fi
 
 echo "Copying configuration files, setting up web root folder"
