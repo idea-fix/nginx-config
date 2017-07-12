@@ -123,6 +123,7 @@ if [ $OS == "UBUNTU" ]
 then
 	echo "Changing nginx daemon user in configuration server file"
 	sed -i "s/user nginx/user $NGINX_USER/" nginx/nginx.conf
+	sudo systemctl nginx stop > /dev/null 2>&1
 	echo "Copying compiled NGINX binary into place"
 	sudo cp /usr/share/nginx/sbin/nginx /usr/sbin/nginx
 fi
