@@ -32,10 +32,6 @@ else
 	n|N  ) echo ""; exit 1;;
 	* ) echo ""; echo "ERROR: Invalid selection, aborting operation!"; exit 1;;
 	esac
-	echo "Stopping any running instances of NGINX"
-	sudo systemctl nginx stop > /dev/null 2>&1
-	sudo pkill nginx > /dev/null 2>&1; sleep 2
-	sudo pkill -9 nginx > /dev/null 2>&1
 fi
 
 if [ $OS == "CENTOS" ]
@@ -51,6 +47,11 @@ then
 	echo "Installing native NGINX package and dependencies"
 	sudo apt-get -y install nginx
 fi
+
+echo "Stopping any running instances of NGINX"
+sudo systemctl stop nginx > /dev/null 2>&1
+sudo pkill nginx > /dev/null 2>&1; sleep 2
+sudo pkill -9 nginx > /dev/null 2>&1
 
 echo "Setting up directory/folder structure"
 sudo mkdir -p /home/nginx
@@ -123,7 +124,6 @@ if [ $OS == "UBUNTU" ]
 then
 	echo "Changing nginx daemon user in configuration server file"
 	sed -i "s/user nginx/user $NGINX_USER/" nginx/nginx.conf
-	sudo systemctl nginx stop > /dev/null 2>&1
 	echo "Copying compiled NGINX binary into place"
 	sudo cp /usr/share/nginx/sbin/nginx /usr/sbin/nginx
 fi
