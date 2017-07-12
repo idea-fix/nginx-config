@@ -49,7 +49,7 @@ then
 elif [ $OS == "UBUNTU" ]
 then
 	echo "Installing native NGINX package and dependencies"
-	sudo apt-get install nginx
+	sudo apt-get -y install nginx
 fi
 
 echo "Setting up directory/folder structure"
@@ -144,7 +144,7 @@ then
 elif [ $OS == "UBUNTU" ]
 then
 	echo "Installing FFMPEG"
-	sudo apt-get install ffmpeg
+	sudo apt-get -y install ffmpeg
 fi
 
 echo "Enabling native NGINX to start at boot"
