@@ -29,13 +29,9 @@ Then clone the source code repository:
     $ git clone https://github.com/nokia/nginx-config.git
     $ cd nginx-config
 
-Then run the installation script for your OS, either:
+Then run the installation script:
 
-    $ sudo ./centos.sh
-
-Or:
-
-    $ sudo ./ubuntu.sh
+    $ sudo ./nginx.sh
 
 
 ### Examining the server
