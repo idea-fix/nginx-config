@@ -20,19 +20,18 @@ Install GIT on CentOS:
 
     $ sudo yum -y install git
 
-Or install GIT on Ubuntu:
+...or install GIT on Ubuntu:
 
     $ sudo apt-get install git
 
 Then clone the source code repository:
 
     $ git clone https://github.com/nokia/nginx-config.git
-    $ cd nginx-config
 
 Then run the installation script:
 
+    $ cd nginx-config
     $ sudo ./nginx.sh
-
 
 ### Examining the server
 
