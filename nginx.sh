@@ -131,8 +131,8 @@ fi
 echo "Copying configuration files, setting up web root folder"
 sudo cp -r /usr/share/nginx/html/* /var/www/html
 sudo cp nginx-rtmp-module/stat.xsl /var/www/html/stat.xsl
-sudo mkdir -p /var/cache/nginx/client_temp /var/www/html/dash /var/www/html/hls
-sudo chown -R $NGINX_USER:$NGINX_USER /var/cache/nginx/ /var/www/html/dash /var/www/html/hls
+sudo mkdir -p /var/cache/nginx/client_temp /var/www/html/dash /var/www/html/dash-auth
+sudo chown -R $NGINX_USER:$NGINX_USER /var/cache/nginx/ /var/www/html/dash /var/www/html/dash-auth
 sudo cp -R nginx/* /etc/nginx
 
 if [ $OS == "CENTOS" ]
