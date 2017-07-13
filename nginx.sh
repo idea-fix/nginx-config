@@ -50,8 +50,8 @@ fi
 
 echo "Stopping any running instances of NGINX"
 sudo systemctl stop nginx > /dev/null 2>&1
-sudo pkill nginx > /dev/null 2>&1; sleep 2
-sudo pkill -9 nginx > /dev/null 2>&1
+sudo pkill -x nginx > /dev/null 2>&1; sleep 1
+sudo pkill -9 -x nginx > /dev/null 2>&1
 
 echo "Setting up directory/folder structure"
 sudo mkdir -p /home/nginx
