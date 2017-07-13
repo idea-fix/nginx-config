@@ -45,7 +45,7 @@ then
 elif [ $OS == "UBUNTU" ]
 then
 	echo "Installing native NGINX package and dependencies"
-	sudo apt-get -y install nginx
+	sudo apt-get -y install gcc make nginx
 fi
 
 echo "Stopping any running instances of NGINX"
