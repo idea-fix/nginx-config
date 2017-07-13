@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 NGINX_VER=nginx-1.12.0
 CONF_FILE=rtmp.nginx.conf
