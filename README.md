@@ -34,7 +34,7 @@ Then clone the source code repository and run the installation script:
 
     $ git clone https://github.com/nokia/nginx-config.git
     $ cd nginx-config
-    $ sudo ./nginx.sh
+    $ sudo ./install.sh
 
 The script will initially install a packaged version of NGINX, then download the source code for NGINX and several additional external modules. It will then compile a new version of NGINX, then copy the new binary into place, overwriting the packaged version. The updated binary can be managed (started, stopped, etc) using the usual "systemctl" tools.
 
