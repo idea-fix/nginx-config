@@ -42,22 +42,34 @@ Once the install has completed, you should have a running NGINX server:
     nginx    10711 10710  0 11:32 ?        00:00:01 nginx: worker process
     nginx    10712 10710  0 11:32 ?        00:00:00 nginx: cache manager process
 
-The server will be listening on three separate TCP ports:
+The server will be listening on two separate TCP ports:
 
     [nokia@nuc-router ~]$ netstat -an
     Active Internet connections (servers and established)
     Proto Recv-Q Send-Q Local Address           Foreign Address         State      
     tcp        0      0 0.0.0.0:1935            0.0.0.0:*               LISTEN     
     tcp6       0      0 :::80                   :::*                    LISTEN     
+
+An additional configuration file providing stream caching capabilties (webcache.http.conf) is disabled in the current build. This feature is complex to configure and is considered experimental. It can be enabled by changing a line in the /etc/nginx/conf.d/http.conf file from:
+
+    include /etc/nginx/conf.d/web.http.conf;
+
+To instead read:
+
+    include /etc/nginx/conf.d/web*.http.conf;
+
+When restarted your server will then be listening on an additional port:
+
     tcp6       0      0 :::3129                 :::*                    LISTEN     
 
-The roles of these ports are described in the table below:
+The roles of the different ports are described in the table below:
 
 Port     | Description
 ---------| -----------
 tcp/80	 | Web server with WebDAV enabled for /dash location
-tcp/3129 | Web server for transparent stream caching
 tcp/1935 | RTMP server/endpoint for stream transcoding
+tcp/3129 | Web server for transparent stream caching (experimental)
+
 
 ### WebDAV Testing
 

@@ -41,11 +41,19 @@ then
 
 	echo "Installing native NGINX package and dependencies"
 	sudo yum install -y nginx iptables-services net-tools gcc wget make libaio-devel pcre-devel openssl-devel expat-devel zlib-devel libxslt-devel libxslt-devel gd-devel GeoIP-devel gperftools-devel perl-ExtUtils-Embed
+	echo "Checking to see if NGINX updates are disabled"
+	if !(grep 'exclude=nginx' /etc/yum.repos.d/epel.repo > /dev/null 2>&1)
+	then
+		echo "Preventing NGINX package updates from EPEL repo"
+		echo "exclude=nginx" >> /etc/yum.repos.d/epel.repo
+	fi
 
 elif [ "$OS" == "UBUNTU" ]
 then
 	echo "Installing native NGINX package and dependencies"
 	sudo apt-get -y install gcc make nginx libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libgd-dev libgeoip-dev
+	echo "Preventing automatic NGINX package updates"
+	sudo apt-mark hold nginx
 fi
 
 echo "Stopping any running instances of NGINX"
