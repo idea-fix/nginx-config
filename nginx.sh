@@ -7,16 +7,21 @@ ROOT_PWD=`pwd`
 RTMP_MODULE_URL="https://github.com/ut0mt8/nginx-rtmp-module.git"
 
 # Check operating system version by checking package manager utility
-if (which yum > /dev/null 2>&1)
+if [ -f /etc/debian_version ]
 then
-	echo "Operating System: CentOS/RHEL"; OS=CENTOS
-	NGINX_USER=nginx
+	if (lsb_release -a 2>&1 | grep Debian > /dev/null 2>&1)
+	then
+		OS=DEBIAN; NGINX_USER=www-data
+	elif (lsb_release -a 2>&1 | grep Ubuntu > /dev/null 2>&1)
+	then
+		OS=UBUNTU; NGINX_USER=www-data
+	fi
 
-elif (which apt-get > /dev/null 2>&1)
+elif [ -f /etc/redhat-release ]
 then
-	echo "Operating System: Ubuntu/Debian"; OS=UBUNTU
-	NGINX_USER=www-data
+	OS=CENTOS; NGINX_USER=nginx
 fi
+echo "Detected Operating System: $OS"
 
 if !(which nginx > /dev/null 2>&1)
 then
