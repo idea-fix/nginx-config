@@ -1,6 +1,6 @@
 # NGINX Server Build/Configuration Script
 
-## For MPEG-DASH stream distribution, RTMP stream transcoding, MPEG-DASH stream caching (experimental)
+## For stream distribution, transcoding and caching
 
 Supported Operating Systems: CentOS 7 and Ubuntu 16
 
