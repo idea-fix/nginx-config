@@ -20,7 +20,7 @@ An experimental feature can (optionally) be enabled:
 * Configures NGINX to listen on port tcp/3129 and acts as a transparent cache on that port
 
 
-### Installing NGINX
+### Building, installing and running NGINX
 
 Install the GIT command-line tool on CentOS 7:
 
@@ -35,6 +35,8 @@ Then clone the source code repository and run the installation script:
     $ git clone https://github.com/nokia/nginx-config.git
     $ cd nginx-config
     $ sudo ./nginx.sh
+
+The script will initially install a packaged version of NGINX, then download the source code for NGINX and several additional external modules. It will then compile a new version of NGINX, then copy the new binary into place, overwriting the packaged version. The updated binary can be managed (started, stopped, etc) using the usual "systemctl" tools.
 
 ### Examining the server
 
