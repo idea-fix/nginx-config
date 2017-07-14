@@ -158,7 +158,7 @@ The NGINX access logs should show a result similar to the line below:
 
     ::ffff:127.0.0.1 - dash [25/May/2017:12:17:47 +0100] "PUT /dash-auth/test.txt HTTP/1.1" 204 25 "-" "curl/7.29.0"
 
-With verification that the publishing process is protected by a password, you should then remove the /dash section of the NGINX web configuration file in order to disable the unprotected folder. Once again, this is highly recommended if your server is exposed to the Internet,  otherwise anybody can upload content to your server.
+With verification that the publishing process is protected by a password, you should then remove the /dash section of the NGINX web configuration file in order to disable the unprotected folder. Once again, this is highly recommended if your server is exposed to the Internet, otherwise anybody can upload content and cause mischief.
 
 The relevant NGINX configuration file can be found here:
 
