@@ -180,6 +180,7 @@ The section you need to remove looks like the folowing:
     		#}
 		allow all;
     	}
+    }
 
 Once again, you can proceed to point an encoder, such as an Elemental of Haivision device, at your web server. Don't forget to supply a username and password in the interface otherwise the publishing process will fail.
 
