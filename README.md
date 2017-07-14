@@ -1,6 +1,6 @@
 # NGINX Server Build/Configuration Script
 
-## For stream distribution, transcoding and caching
+## For video stream distribution, transcoding and caching
 
 Supported Operating Systems: CentOS 7 and Ubuntu 16
 
