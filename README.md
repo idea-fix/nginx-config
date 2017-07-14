@@ -13,7 +13,7 @@ The script:
 * Enables WebDAV write access to a folder under the web root, /dash and /dash-auth
 * Configures NGINX to act as an RTMP server and enables stream transcoding from RTMP to MPEG-DASH
 
-An experimental feature can optionally be enabled manually:
+An experimental feature can (optionally) be enabled manually:
 
 * Configures NGINX to listen on port tcp/3129 and acts as a transparent cache on that port
 
