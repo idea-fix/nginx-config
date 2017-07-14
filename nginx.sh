@@ -45,7 +45,6 @@ then
 	if !(grep 'exclude=nginx' /etc/yum.repos.d/epel.repo > /dev/null 2>&1)
 	then
 		echo "Preventing NGINX package updates from EPEL repo"
-		sudo yum --exclude=nginx
 		sudo sed -i -r 's/\[epel\]/\[epel\]\nexclude=nginx/' /etc/yum.repos.d/epel.repo
 	fi
 
