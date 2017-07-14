@@ -158,17 +158,13 @@ With the publishing process protected by a password, you will want to comment ou
 
 You can test stream transcoding by invoking FFMPEG and providing it with a local video file to simulate the publishing of live content:
 
-    $ ffmpeg -re -i Samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -acodec libfaac -f flv rtmp://127.0.0.1/dash/test_TB
-
-On Ubuntu the flags need to be slightly different, since they don't support the same audio codecs, you may need to experiment:
-
-    $ ffmpeg -re -i Samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -c:a aac -strict -2 -f flv rtmp://127.0.0.1/dash/test_TB
+    $ ffmpeg -re -i Samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -acodec aac -f flv rtmp://127.0.0.1/dash/test_TB
 
 (substitute an actual MP4 file name and IP address of your server in the string above)
 
 This will deliver your video file to the NGINX RTMP module. After a few moments, you should also be able to see transcoded content being exposed through the NGINX web server at the URL:
 
-http://[server-ip]/transcode-dash/
+http://[server-ip]/transcode-dash/test_TB
 
 (substitute the actual IP address of your server in the string above)
 
