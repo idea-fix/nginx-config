@@ -232,5 +232,5 @@ Trancoding RTMP to HLS works in exactly the same way as MPEG-DASH, the only diff
 
     rtmp://[server-ip]/hls/[stream-name]
 
-The other locations are changed in similar fashion, just substitute "hls" for "dash"."
+The other file/path locations are changed in similar fashion, just substitute "hls" for "dash"."
 
