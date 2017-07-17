@@ -2,7 +2,7 @@
 
 ## For video stream distribution, transcoding and caching
 
-Supported Operating Systems: CentOS 7 and Ubuntu 16
+Supported Operating Systems: CentOS 7, Ubuntu 16, Debian 8/9
 
 This source code repository contains a shell script which will automate the process of building and running an NGINX server that has been specifically enhanced for media processing tasks. The software will be configured for WebDAV write access, to allow for the hosting and distribution of MPEG-DASH video streams. It will also accept an RTMP stream and convert/transcode it to either MPEG-DASH or HLS. In conjunction with another set of complementary scripts, it can also be used to cache video streams hosted at external sites/locations, such as MPEG-DASH streams distributed by Akamai and their CDN network.
 
