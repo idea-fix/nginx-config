@@ -194,13 +194,17 @@ You can take an RTMP source and transcode it to MPEG-DASH by publishing to the U
 
 You can test RTMP transcoding by using FFMPEG and providing it with a local video file to simulate the publishing of live content:
 
-    $ ffmpeg -re -i Samsung_UHD_demo_3Iceland.mp4 -vcodec libx264 -acodec aac -f flv rtmp://127.0.0.1/dash/test_TB
+    $ ffmpeg -re -i Samsung_UHD_demo_3Iceland.mp4 -c copy -f flv rtmp://172.16.164.136/dash/test_TB
 
-(You will need to substitute the actual video file name and IP address of your server in the command above)
+(You will need to substitute an actual video file name and IP address of your server in the command above)
 
 This will deliver your video file to the NGINX RTMP module. After a few moments you should also be able to see transcoded content being exposed through the NGINX web server at the URL:
 
-    http://[server-ip]/transcode-dash/test_TB/
+    http://172.16.164.136/transcode-dash/test_TB/
+
+Point your client application to the MPD file at the URL:
+
+    http://172.16.164.136/transcode-dash/test_TB/index.mpd
 
 The local directory where this content is written on the server can be found under /tmp/dash, but under CentOS this location is remapped. The commands shown below should show you the generated MPEG-DASH content on CentOS:
 
@@ -227,7 +231,7 @@ That log message shows that seven seconds of content publishing took place. At t
 
     rtmp://[server-ip]/dash/[stream-name]
 
-Do NOT add the .mpd file suffix to the above URL, the MPD file will be  created automatically by the transcoding process.
+Do NOT add the .mpd file suffix to the above URL, the MPD file will be created automatically by the transcoding process.
 
 ### Stream Trancoding from RTMP to HLS
 
