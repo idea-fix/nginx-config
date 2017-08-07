@@ -22,7 +22,7 @@ An experimental feature can (optionally) be enabled:
 
 ### Building, installing and running NGINX
 
-Install the GIT command-line tool on CentOS 7:
+Install the GIT command-line tool on CentOS:
 
     $ sudo yum -y install git
 
