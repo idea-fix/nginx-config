@@ -26,7 +26,7 @@ Install the GIT command-line tool on CentOS 7:
 
     $ sudo yum -y install git
 
-...or alternatively use the command below on Ubuntu 16:
+...or alternatively use the command below on Ubuntu/Debian:
 
     $ sudo apt-get install git
 
