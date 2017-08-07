@@ -200,11 +200,11 @@ You can test RTMP transcoding by using FFMPEG and providing it with a local vide
 
 This will deliver your video file to the NGINX RTMP module. After a few moments you should also be able to see transcoded content being exposed through the NGINX web server at the URL:
 
-    http://172.16.164.136/transcode-dash/test_TB/
+    http://172.16.164.140/transcode-dash/
 
 Point your client application to the MPD file at the URL:
 
-    http://172.16.164.136/transcode-dash/test_TB/index.mpd
+    http://172.16.164.140/transcode-dash/test_TB.mpd
 
 The local directory where this content is written on the server can be found under /tmp/dash, but under CentOS this location is remapped. The commands shown below should show you the generated MPEG-DASH content on CentOS:
 

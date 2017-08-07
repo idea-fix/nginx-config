@@ -129,17 +129,6 @@ cd $NGINX_VER; ./configure --add-module=../nginx-http-auth-digest --add-module=.
 elif [ "$OS" == "DEBIAN" ]
 then
 
-# Debian build
-if [ ! -f nginx-rtmp-module/.patched ]
-then
-	if (lsb_release -a | grep stretch > /dev/null 2>&1)
-	then
-       		echo "Applying Debian 9 patch for RTMP module compile bug"
-       		patch nginx-rtmp-module/ngx_rtmp_handshake.c nginx/bug791.diff
-	fi
-	touch nginx-rtmp-module/.patched
-fi
-
 cd $NGINX_VER; ./configure --add-module=../nginx-http-auth-digest --add-module=../nginx-dav-ext-module --add-module=../nginx-rtmp-module --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2' --with-ld-opt=-Wl,-z,relro --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-debug --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_addition_module --with-http_dav_module --with-http_geoip_module --with-http_gzip_static_module --with-http_image_filter_module --with-http_sub_module --with-http_xslt_module --with-mail --with-mail_ssl_module
 fi
 
